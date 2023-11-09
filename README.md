@@ -10,7 +10,7 @@ Contacto
 Emilio Antonio Peralta Montiel
 A01712354@tec.mx
 
-#Problema
+<h2>Problema</h2>
 
 El problema que se identifico fue la dificultad de administración de inventario que algunas tiendas sufren.  
   Personalmente , la familia de una amiga cuentan con un spa.  Donde siempre se menciona la dificultad   
