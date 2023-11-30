@@ -1,14 +1,19 @@
+#pragma once
 #include <iostream>
 
-class Ropa {
+class Ropa{
 private:
-	int precio;
+	std::string precio;
 	bool is_new;
 	std::string material;
 	std::string marca;
 public:
+	Ropa(std::string preci, bool isNew, std::string mat, std::string marc) :precio(preci), is_new(isNew), material(mat) {};
+	//Todo incluido de forma generica.
+	Ropa() : precio("500"), is_new(true), material("Algodón") {};
+
 	//GETTERS
-	int get_precio() {
+	std::string get_precio() {
 		return precio;
 	}
 	bool get_isNew() {

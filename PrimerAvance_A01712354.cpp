@@ -1,4 +1,4 @@
-/*
+/*/*
 Emilio Antonio Peralta Montiel
 A01712354
 */
@@ -10,15 +10,36 @@ A01712354
 #include <vector>
 #include "jean.h"
 #include "calzado.h"
+#include "ingresoRopa.h"
+#include "ropa.h"
+#include "persona.h"
+#include "casa.h"
 using namespace std;
 
 
 void menu() {
 	system("cls");
-	string modulos[3] = { "1) Crear e imprimir nuevo articulo" , "2) Ver Articulos" , "0) Salir"};
+	string modulos[5] = { "1) Crear e imprimir nuevo articulo" , "2) Ver Articulos" ,"3) ingresar Ropa" , "4)Persona ", "0) Salir"};
 	cout << "------------- Proyecto Avance 1 -------------\n\nEmilio Antonio Peralta Montiel-A01712354\n" << endl;
-	for (int i = 0; i < 3; i++) {
-		cout  << modulos[i] << endl;
+	for (int i = 0; i < 5; i++) {
+		cout << modulos[i] << endl;
+	}
+}
+
+bool temp_is_new_label() {
+	std::string temp_new_isNew;
+	cout << "Ingrese ahora si esta nuevo [S/N]"; getline(cin, temp_new_isNew);
+	if (temp_new_isNew == "S") {
+		return  true;
+	}
+	else if (temp_new_isNew == "N") {
+		return  false;
+	}
+	else {
+		system("cls");
+		cout << "Esa no es una opción correcta , vamos de nuevo!" << endl;
+		Sleep(2000);
+		temp_is_new_label();
 	}
 }
 
@@ -149,6 +170,54 @@ int main()
 				cout << "Tipo: " << vectorCalzado[i].get_estilo() << "\n\n" << endl;
 			}
 			system("pause");
+		}
+		else if (sel == "3") {
+			system("cls");
+			cout << "Creando nueva ropa!!" << endl;
+			std::string new_precio;
+			bool new_IsNew;
+			std::string material;
+			std::string marca;
+			cout << "\nPara esto vamos a crear una ropa!" << endl;
+			cout << "Ingrese el precio [100 , 500 , 300] : "; getline(cin, new_precio);
+			new_IsNew = true;
+			cout << "Ingrese el material [Algodón , Mezclilla] : "; getline(cin, material);
+			cout << "Ingrese la marca [Nike , Adidas] : "; getline(cin, marca);
+			Ropa ropaAIngresar(new_precio, new_IsNew, material, marca);
+			cout << "Creada la nueva ropa!" << endl;
+			system("cls");
+			cout << "Ahora si podemos pasar a agregar nuestra ropa" << endl;
+			int cantidad;
+			std::string tipo;
+			cout << "Ingresa en valor numerico el numero de piezas [1 , 2 , 3 ] : "; cin >> cantidad;
+			cout << "Ingresa en texto el tipo de ropa: "; getline(cin, tipo);
+			cout << "\nPerfecto ingresemos la ropa." << endl;
+			IngresoDeRopa aaaa(&ropaAIngresar, cantidad, tipo);
+			aaaa.a();
+			cout << "Aqui se demostro la composición" << endl;
+			Sleep(3000);
+			system("cls");
+		}
+		else if (sel == "4") {
+			system("cls");
+			int edad;
+			std::string nombre;
+			cout << "Vamos a crear una persona!" << endl;
+			cout << "Ingrese el nombre de la persona"; getline(cin, nombre);
+			cout << "Ingrese en valor numerico la edad de la persona: "; cin >> edad;
+			Persona p(nombre, edad);
+			cout << "-------------------------------------" << endl;
+			cout << "Ahora hagamos la dirección" << endl;
+			std::string direccion111;
+			cout << "Ingrese su dirección : "; getline(cin, direccion111);
+			Casa c(&p);
+			// Imprimimos los datos de la persona
+			std::cout << "El nombre de la persona es: " << p.get_nombre() << std::endl;
+			std::cout << "La edad de la persona es: " << p.get_edad() << std::endl;
+
+			// Imprimimos los datos de la casa
+			std::cout << "La dirección de la casa es: " << c.get_direccion() << std::endl;
+			std::cout << "El dueño de la casa es: " << c.get_duenio()->get_nombre() << std::endl;
 		}
 		else if (sel == "0") {
 			continua = false;

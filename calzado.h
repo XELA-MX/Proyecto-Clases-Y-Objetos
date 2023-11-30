@@ -1,7 +1,8 @@
 #include <iostream>
+#include "ropa.h"
 using namespace std;
 
-class calzado {
+class calzado : public Ropa {
 private:
     string talla;
     int precio;
